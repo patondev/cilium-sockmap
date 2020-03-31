@@ -15,7 +15,7 @@ int bpf_redir_proxy(struct sk_msg_md *msg)
 {
     struct sock_key key = {};
     sk_msg_extract4_key(msg, &key);
-    __u64 flags = BPF_F_INGRESS;
+    //__u64 flags = BPF_F_INGRESS;
     //if (key.sip4 == 0x100007f && key.dip4 == 0x100007f) {
     //	if (key.sport == 8080 || key.dport == 8080) {
 	//	msg_redirect_hash(msg, &sock_ops_map, &key, flags);
