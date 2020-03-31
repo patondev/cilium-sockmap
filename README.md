@@ -41,3 +41,7 @@ docker stop $CID $CID2
 when traffic send direct from client to fortio server using `127.0.0.1:8080` the qps in ebpf mode is better than normal case(in my vm it's 8000+(sockops) vs 6000+(no-sockops)).
 
 when traffic send to envoy which then proxy to fortio server using `$ip:10000` the qps in ebpf mode drop sharply compare to normal case(in my vm it's 200+(sockops) vs 4000+(no-sockops))
+
+```
+tc exec bpf debug
+```
