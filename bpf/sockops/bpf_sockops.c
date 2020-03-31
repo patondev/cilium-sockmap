@@ -14,6 +14,8 @@ static inline void bpf_sock_ops_ipv4(struct bpf_sock_ops *skops)
 {
     struct sock_key key = {};
     sk_extract4_key(skops, &key);
+    u64 pid = bpf_get_current_pid_tgid() << 32
+    printt("PID %d\n", pid);
     printt("source port: %d, destination port: %d\n", key.sport, key.dport);
     printt("source ipv4: %u, destination ipv4: %u\n", key.sip4, key.dip4); 
     sock_hash_update(skops, &sock_ops_map, &key, 0);
