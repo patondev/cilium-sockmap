@@ -14,14 +14,9 @@ static inline void bpf_sock_ops_ipv4(struct bpf_sock_ops *skops)
 {
     struct sock_key key = {};
     sk_extract4_key(skops, &key);
-	// the case for ingress from envoy to local service instance
-	//if (key.sip4 == 0x100007f && key.dip4 == 0x100007f) {
-	//	if (key.sport == 8080 || key.dport == 8080){
-		printt("prepare insert local ip to map %d %d\n", key.sport, key.dport);
-		sock_hash_update(skops, &sock_ops_map, &key, BPF_NOEXIST);
-	//	return;
-	//	}
-	//}
+    printt("source port: %d, destination port: %d\n", key.sport, key.dport);
+    printt("source port: %ul, destination port: %ul\n", key.sip4, key.dip4); 
+    sock_hash_update(skops, &sock_ops_map, &key, BPF_NOEXIST);
 }
 
 static inline void bpf_sock_ops_ipv6(struct bpf_sock_ops *skops)
