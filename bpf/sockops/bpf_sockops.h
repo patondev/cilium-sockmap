@@ -68,22 +68,6 @@ struct bpf_elf_map __section_maps sock_ops_map = {
 	.max_elem       = SOCKOPS_MAP_SIZE,
 };
 
-struct bpf_elf_map __section_maps test_array = {
-	.type		= BPF_MAP_TYPE_PROG_ARRAY,
-	.size_key	= sizeof(__u32),
-	.size_value	= sizeof(__u32),
-	.pinning	= PIN_GLOBAL_NS,
-	.max_elem	= 2,
-};
-
-struct bpf_elf_map __section_maps perfmap = {
-	.type       = BPF_MAP_TYPE_PERF_EVENT_ARRAY,
-	.size_key   = sizeof(__u32),
-	.size_value = sizeof(__u32), 
-	.max_elem   = 2,
-	.pinning    = PIN_GLOBAL_NS,
-};
-
 struct cidr_lpm_key {
 	struct bpf_lpm_trie_key lpm_key;
 //	__u16 pad1;
