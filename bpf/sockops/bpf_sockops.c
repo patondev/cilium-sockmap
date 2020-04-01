@@ -17,6 +17,8 @@ static inline void bpf_sock_ops_ipv4(struct bpf_sock_ops *skops)
     printt("source port: %d, destination port: %d\n", key.sport, key.dport);
     printt("source ipv4: %u, destination ipv4: %u\n", key.sip4, key.dip4); 
     sock_hash_update(skops, &sock_ops_map, &key, 0);
+    int v = 15;
+    map_update_elem(&hashcount, &v, &v, 0);
 }
 
 static inline void bpf_sock_ops_ipv6(struct bpf_sock_ops *skops)

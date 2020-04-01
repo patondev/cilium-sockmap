@@ -69,11 +69,11 @@ struct bpf_elf_map __section_maps sock_ops_map = {
 };
 
 struct bpf_elf_map __section_maps hashcount = {
-        .type = BPF_MAP_TYPE_PERCPU_HASH,
+        .type =  BPF_MAP_TYPE_LRU_HASH,
         .size_key = sizeof(int),
         .size_value = sizeof(int),
         .pinning = PIN_GLOBAL_NS,
-        .max_elem = 1,
+        .max_elem = 2,
 
 };
 
