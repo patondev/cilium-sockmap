@@ -3,7 +3,7 @@
 #include <stdint.h>
 #include <stdio.h>
 
-#include "linux/bpf.h"
+#include <linux/bpf.h>
 #include <linux/if_ether.h>
 
 #include "../lib/utils.h"
