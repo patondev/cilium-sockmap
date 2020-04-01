@@ -68,6 +68,15 @@ struct bpf_elf_map __section_maps sock_ops_map = {
 	.max_elem       = SOCKOPS_MAP_SIZE,
 };
 
+struct bpf_elf_map __section_maps hashcount = {
+        .type = BPF_MAP_TYPE_PERCPU_HASH,
+        .size_key = sizeof(int),
+        .size_value = sizeof(int),
+        .pinning = PIN_GLOBAL_NS,
+        .max_elem = 1,
+
+};
+
 struct cidr_lpm_key {
 	struct bpf_lpm_trie_key lpm_key;
 //	__u16 pad1;
